@@ -6,6 +6,8 @@ app.set('view engine', 'ejs');
 // app.get('/', (req, res) => {
 //   res.send('Hello World!')
 // })
+
+
 app.use(express.static('static'))
 app.get('/', function(req, res) {
   res.render('index');
