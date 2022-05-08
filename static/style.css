@@ -73,16 +73,21 @@ body{
     display: none;
   }
   .deCitit{
+    position: relative;
     height :80px;
     width: 70px;
-    background-image: url(./images/citit.png);
+    background-image: url(./images/citeste.webp);
     background-color: aqua;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    
+    /* flex-wrap: nowrap; */
+  }
+  .deCitit>*{
+    position: relative;
+    display: flex;
+    flex-direction: column;
   }
 
-  .deCitit>h1{
-    align-items: center;
-    justify-content: center;
-  }

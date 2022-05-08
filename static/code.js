@@ -256,7 +256,14 @@ function potiSaCitesti(){
     }
 }
 
-setInterval(potiSaCitesti, 1000);
+const intervCitit = setInterval(potiSaCitesti, 1000);
+
+body.addEventListener('keydown', (e)=>{
+    if(e.key=='k'){
+        clearInterval(intervCitit);
+        
+    }
+})
 
 
 
