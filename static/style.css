@@ -72,3 +72,17 @@ body{
   .carti>p{
     display: none;
   }
+  .deCitit{
+    height :80px;
+    width: 70px;
+    background-image: url(./images/citit.png);
+    background-color: aqua;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .deCitit>h1{
+    align-items: center;
+    justify-content: center;
+  }

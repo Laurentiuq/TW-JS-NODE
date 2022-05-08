@@ -13,6 +13,10 @@ app.get('/', function(req, res) {
   res.render('index');
 });
 
+// app.get('/images/carteNoua.jpg'), function(req,res){
+//   res.end('carteNoua.jpg');
+// }
+
 app.listen(port, () => {
   console.log(`Example app listening on port http://localhost:${port}/`)
 })
