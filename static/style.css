@@ -39,7 +39,9 @@ body{
   }
   .sidenav>a{
       font-style: none;
-      font-size: 30px;
+      text-decoration: none;
+      color: rgb(142, 112, 142);
+      font-size: 20px;
       padding: auto;
       margin: 20px;
   }
