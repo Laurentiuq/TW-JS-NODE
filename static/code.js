@@ -194,6 +194,7 @@ darkLight.addEventListener('click', fchange=>{
 })
 
 //la apasare pe original se sterge din local storage informatia despre dark sau light mode
+// si celelalte info legate de carti
 
 const original = document.querySelector('.reseteazaDarkLight')
 original.addEventListener('click', del=>{
@@ -213,6 +214,7 @@ reseteaza.addEventListener('click', del=>{
 
 //setTimeout is setInterval
 
+// CODU INCEPAND DE AICI PROBABIL NU FACE NIMIC- NU MAI STIU CE E CU EL
 function urmatoareCarte(){
     let carteNoua = document.createElement('div');
     carteNoua.innerText="Urmatoare carte:"
@@ -231,6 +233,7 @@ function stergeUrmatoareCarte(){
 
 urmatoareCarte();
 setTimeout(stergeUrmatoareCarte, 10000);
+// AICI SE TERMINA CODUL CARE PROBABIL NU MAI FACE NIMIC
 
 function potiSaCitesti(){
     let cartiNecitite = [];
@@ -258,6 +261,7 @@ function potiSaCitesti(){
 
 const intervCitit = setInterval(potiSaCitesti, 1000);
 
+// la k opreste ce tine de setInerval
 body.addEventListener('keydown', (e)=>{
     if(e.key=='k'){
         clearInterval(intervCitit);
@@ -265,6 +269,16 @@ body.addEventListener('keydown', (e)=>{
     }
 })
 
+
+
+//delete
+// let sterge = getElementById('delete');
+// sterge.addEventListener(click, (e)=>{
+//     fetch('/delete', {
+//         method:'DELETE'
+//     })
+//     .then((response)=>{response.json})
+// })
 
 
 
