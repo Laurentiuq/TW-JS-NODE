@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang = "ro">
+<head>
+    
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+
+<body>
+  <%- include('./partials/sidebar'); %>
+  <div class="main">
+    <h2>Cartile adaugate: </h2>
+    
+  </div>
+</body>
+</html>
+<script>
+    fetch('http://localhost:3000/read2/json')
+  .then(function(response) {
+    return response.json();
+  })
+  .then(function(carti) {
+    console.log(JSON.stringify(carti));
+    for(let i = 0; i<carti.length; i++){
+        let nw = document.createElement('div');
+        nw.innerText = carti[i].titlu;
+        nw.style.position = "relative";
+        nw.style.left = "200px";
+        console.log(nw);
+        let body = document.getElementsByTagName('body');
+        console.log(body[0]);
+        body[0].appendChild(nw);
+    }
+  });
+</script>

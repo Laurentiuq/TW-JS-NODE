@@ -1,9 +1,10 @@
 
+const read = require('body-parser/lib/read');
 const express = require('express');
 const res = require('express/lib/response');
 var formidable = require('formidable');
 const app = express()
-var rtr = express.Router();
+var router = express.Router();
 
 const port = 3000
 app.set('view engine', 'ejs');
@@ -18,7 +19,7 @@ app.get('/', function(req, res) {
   res.render('index');
 });
 
-// ruta de create
+// ruta de create cu from
 // http://localhost:3000/create
 app.get('/create', function(req, res) {
   res.render('create');
@@ -44,13 +45,15 @@ app.post('/create', (req, res, next) => {
   });
 });
 
+// read ce afiseaza direct json-ul
 // afiseaza noile titluri de carte adaugate
 //http://localhost:3000/read
 app.get('/read', function(req, res) {
   res.send(titlu_carti)
 });
 
-// ruta de update
+// ruta de update cu form
+//http://localhost:3000/update
 app.get('/update', function(req, res) {
   res.render('update');
 });
@@ -89,7 +92,8 @@ app.post('/update', (req, res, next) => {
   });
 });
 
-// ruta de delete
+// ruta de delete cu form
+// http://localhost:3000/delete
 app.get('/delete', function(req, res) {
   res.render('delete');
 });
@@ -111,7 +115,7 @@ app.post('/delete', (req, res, next) => {
       // ind = titlu_carti.indexOf(fields["titlu"]);
     }
     if(ind!=-1){
-      titlu_carti.splice(ind);
+      titlu_carti.splice(ind, 1);
       res.send(`Ai sters cartea cu titlul: ${fields["titlu"]}`)
     }
     else{
@@ -125,21 +129,47 @@ app.post('/delete', (req, res, next) => {
   });
 });
 
-
-app.delete('/delete2', (req, res)=>{
-  console.log('dfds');
-  res.send("DELETE");
+// ruta de delete cu parametrii prin url
+// parametrul este titlul cartii care trebuie stearsa
+// http://localhost:3000/delete2/ 'titlu'
+app.get('/delete2/:titlu', (req, res)=>{
+  console.log(req.params.titlu);
+  let ind;
+    for(let i = 0; i<titlu_carti.length; i++){
+      if(titlu_carti[i].titlu == req.params.titlu)
+        ind = i;
+    }
+    if(ind!=-1){
+      titlu_carti.splice(ind, 1);
+      res.send(`Ai sters cartea cu titlul: ${req.params.titlu}`)
+    }
+    else{
+      res.send(`Cartea nu exista sau nu a poate fi stearsa`)
+      
+    }
 })
 
-// app.get('*', function(req, res) {
-//   res.render('404');
-// });
+
+// ruta de read care trimite un json cu obiecte catre javascript
+// din javascript se creeaza dinamic div uri corespunzatoarea valorilor din json si se adauga in pagina
+
+
+// http://localhost:3000/read2/json  - trimite json-ul
+// http://localhost:3000/read2 - afiseaza elementele din json ul trimis anterior
+app.get('/read2', (req, res)=>{
+  res.render('read');
+})
+
+app.get('/read2/json', (req, res)=>{
+  res.send(titlu_carti)
+})
 
 
 
-// app.get('/images/carteNoua.jpg'), function(req,res){
-//   res.end('carteNoua.jpg');
-// }
+app.get('*', function(req, res) {
+  res.render('404');
+});
+
 
 app.listen(port, () => {
   console.log(`Example app listening on port http://localhost:${port}/`)

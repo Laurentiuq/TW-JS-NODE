@@ -11,15 +11,24 @@
   <%- include('./partials/sidebar'); %>
   <div class="main">
     <h2>Adauga o alta carte</h2>
-    <form action="/create"  method="post">
+    <form action="/create"  method="post" onsubmit = "validare()">
       <div>Titlul cartii: <input id="titlu" type="text" name="titlu" /></div>
       <div>Autorul cartii: <input type="text" name="autor" /></div>
       <input type="submit" value="Submit" />
     </form>
   </div>
 </body>
-</html>
 <script>
-  let titlu = document.getElementById("titlu");
-  console.log(/^[A-Za-z\s]*$/.test(titlu))
+  function validare(){
+    let titlu = getElementById('titlu').value;
+    console.log(titlu)
+    if(/^[A-Za-z\s]*$/.test(titlu))
+    {
+        alert("Date Incorecte");
+    console.log("DFDFFFFF");
+    }
+}
+
 </script>
+</html>
+
