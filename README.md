@@ -1,1 +1,2 @@
-# TW-JS-NODE
+# Proiect pentru Tehnici Web, anul 1, semestrul 2.
+Dune presentation website
